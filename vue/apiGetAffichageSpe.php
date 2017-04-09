@@ -7,7 +7,8 @@
  */
 try{
     require 'config/config.php';
-
+    set_error_handler('gestionDesErreurs');
+    set_exception_handler("gestionDesExceptions");
     //on precise que l'on renvoie du json
     header("Content-type:application/json");
     if( !empty( $_GET['key'] ) ){
@@ -21,6 +22,8 @@ try{
             //si cle valide on extrait et on renvoie le fichier json
             if( $resultat = $api_komidi->getAllSpe() ){
                 //cas ou on a pu lancer la requete
+                //echo print_r($resultat);//debug
+                //echo $resultat[0]['photo'];//debug
                 affichageJson( "Liste des spectacles trouvee, traiter et renvoyer." , $resultat);
             }
             else{

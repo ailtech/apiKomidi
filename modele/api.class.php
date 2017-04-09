@@ -32,6 +32,10 @@ function requeteArray($str){
         $req->execute();
         $tableau = array();
         while( $row = $req->fetch(PDO::FETCH_ASSOC) ){
+            if( isset( $row['photo']) ){
+                $photo = $_SERVER['SERVER_NAME']."/image/".$row['photo'];
+                $row['photo'] = $photo;
+            }
             array_push($tableau, $row);
         }
         //$rst=$req->fetch(PDO::FETCH_ASSOC);
@@ -41,6 +45,13 @@ function requeteArray($str){
         return false;
     }
 }
+
+//gestion erreur
+function gestionErEc($type,$code_err,$msg_err,$fichier_err,$ligne_err){
+    $str = "INSERT INTO erec_info_admin(type, code, message, fichier, ligne, date) VALUES (\"$type\",\"$code_err\",\"$msg_err\",\"$fichier_err\",\"$ligne_err\",NOW());";
+    return $this->requeteObjet($str);
+}
+
 
 //-------------cle authentification-------------------------------
 function getCle( $cle ){

@@ -8,6 +8,8 @@
 try{
     require 'config/config.php';
     //on precise que l'on renvoie du json
+    set_error_handler('gestionDesErreurs');
+    set_exception_handler("gestionDesExceptions");
     header("Content-type:application/json");
 
 

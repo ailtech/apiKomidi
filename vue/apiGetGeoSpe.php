@@ -5,10 +5,13 @@
  * Date: 15/03/17
  * Time: 20:55
  */
+
+
 try{
     //importe fichier important
-    require 'config/config.php';
-
+    include 'config/config.php';
+    set_error_handler('gestionDesErreurs');
+    set_exception_handler("gestionDesExceptions");
     //on precise que l'on renvoie du json
     header("Content-type:application/json");
     //on commence les teste pour voir si les info envoyer sont bien
@@ -21,7 +24,7 @@ try{
             //echo "key inexiistante dans bdd";
         }
         else{
-            if( !empty($_GET['idSpe'])   ){
+            if( !empty($_GET['idSpe'])    ){//a rajouetr
                 //on teste le spectacle
                 $idSpe = $_GET['idSpe'];//on initilaise dans une variable
 
@@ -51,7 +54,7 @@ try{
     }
 }
 catch (Exception $e){
-    echo $e->getMessage();
+    //echo $e->getMessage();
 }
 finally{
 

@@ -62,9 +62,75 @@ try{
 
         }
     }
-    function affichageJsonBoucle( $message , $resultat){
+    //-------------------------------------------
+    function gestionDesErreurs($type, $message, $fichier, $ligne){
+
+        switch ($type){
+            case E_USER_ERROR:
+
+                $type_erreur = "Erreur fatale";
+
+                break;
+
+
+            case E_WARNING:
+
+            case E_USER_WARNING:
+
+                $type_erreur = "Avertissement";
+
+                break;
+
+
+            case E_NOTICE:
+
+            case E_USER_NOTICE:
+
+                $type_erreur = "Remarque";
+
+                break;
+
+
+            case E_STRICT:
+
+                $type_erreur = "Syntaxe Obsolète";
+
+                break;
+
+
+            default:
+
+                $type_erreur = "Erreur inconnue";
+
+                break;
+
+        }
+
+        $msg_erreur = $type_erreur.":".$fichier.":".$ligne.":".$message;
+        //envoyeErreur($msg_erreur);
+        echo $msg_erreur;
 
     }
+    //--------------------------------------------------
+    function gestionDesExceptions($exception){
+
+        $msg_erreur = "ERREUR : ".$exception->getMessage().":".$exception->getFile().":".$exception->getLine();
+        //envoyeErreur($msg_erreur);
+        echo $msg_erreur;
+
+    }
+    //---------------------------------------------------
+    function envoyeErreur($msg_erreur){
+
+        if( strlen($msg_erreur) <= 70 ){
+            mail("lefevre451@gmail.com", "Rapport Erreur Exception.", $msg_erreur);
+        }
+        else{
+            $msg_erreur = wordwrap($msg_erreur,70);
+            mail("lefevre451@gmail.com", "Rapport Erreur Exception.", $msg_erreur);
+        }
+    }
+    //-----------------------------------------------------
 }
 catch(Exception $e){
     echo $e->getMessage();

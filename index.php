@@ -8,6 +8,7 @@
  */
 //on indique que l'on manipule les fichier json
 header("Content-type: application/json; charset=utf-8");
+header("Access-Control-Allow-Origin: *");
 
 try{
     require 'controleur/controleur.php';

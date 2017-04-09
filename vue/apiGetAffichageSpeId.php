@@ -8,7 +8,8 @@
 
 try{
     require 'config/config.php';
-
+    set_error_handler('gestionDesErreurs');
+    set_exception_handler("gestionDesExceptions");
     //on precise que l'on renvoie du json
     header("Content-type:application/json");
     if( !empty( $_GET['key'] ) ){
@@ -27,7 +28,7 @@ try{
                 //on verifie si le spectacle existe
                 if( count($resultat) == 0 ){
                     // cas ou le spectacle nexiste pas
-                    affichageJsonErreur("Spectacle incinnue a la base de donne.");
+                    affichageJsonErreur("Spectacle inconnue a la base de donne.");
                 }
                 else{
                     affichageJson( "Spectacle trouvee, traiter et renvoyer." , $resultat);
