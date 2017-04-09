@@ -108,7 +108,7 @@ try{
 
         $msg_erreur = $type_erreur.":".$fichier.":".$ligne.":".$message;
         //envoyeErreur($msg_erreur);
-        echo $msg_erreur;
+        //echo $msg_erreur;
 
     }
     //--------------------------------------------------
@@ -116,7 +116,7 @@ try{
 
         $msg_erreur = "ERREUR : ".$exception->getMessage().":".$exception->getFile().":".$exception->getLine();
         //envoyeErreur($msg_erreur);
-        echo $msg_erreur;
+        //echo $msg_erreur;
 
     }
     //---------------------------------------------------
