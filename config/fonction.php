@@ -5,12 +5,22 @@
  * Date: 15/03/17
  * Time: 21:46
  */
+/**
+ * Fichier qui contient les fonction qui permet de renvoyer les erreur, à l'administrateur pour être au cournat d'eventuelle erreur et exception.
+ *
+ * @copyright ailTECH
+ * @author Alexandre
+ * @version 1
+ * @since 06/03/2017
+ */
 //on indique que l'on manipule les fichier json
 header("Content-type: application/json; charset=utf-8");
 
-try{
+try
+{
 
-    function affichageJsonErreur( $message ){
+    function affichageJsonErreur( $message )
+    {
         //on instancie le tableau de reponse json
         $reponse = array();
         //si variable json non existante on renvoie une reponse
@@ -20,12 +30,14 @@ try{
         //on convertit l'array en Json
         $resultatFormatJson = json_encode( $reponse );
         //on regarde si la conversion ce passe bien
-        if( $resultatFormatJson ){
+        if( $resultatFormatJson )
+        {
             //si elle se passe bien on l'affiche
             echo $resultatFormatJson;
 
         }
-        else{
+        else
+        {
             //si elle se passe mal on renvoyer un son erreur
             echo "{
                     'etat':false,
@@ -37,7 +49,8 @@ try{
         }
     }
     //fonction affcihage de json reussite
-    function affichageJson( $message , $resultat){
+    function affichageJson( $message , $resultat)
+    {
         //on instancie le tableau de reponse json
         $reponse = array();
         //si variable json non existante on renvoie une reponse
@@ -47,12 +60,14 @@ try{
         //on convertit l'array en Json
         $resultatFormatJson = json_encode( $reponse );
         //on regarde si la conversion ce passe bien
-        if( $resultatFormatJson ){
+        if( $resultatFormatJson )
+        {
             //si elle se passe bien on l'affiche
             echo $resultatFormatJson;
 
         }
-        else{
+        else
+        {
             //si elle se passe mal on renvoyer un son erreur
             echo "{
                     'etat':false,
@@ -63,9 +78,11 @@ try{
         }
     }
     //-------------------------------------------
-    function gestionDesErreurs($type, $message, $fichier, $ligne){
+    function gestionDesErreurs($type, $message, $fichier, $ligne)
+    {
 
-        switch ($type){
+        switch ($type)
+        {
             case E_USER_ERROR:
 
                 $type_erreur = "Erreur fatale";
@@ -112,7 +129,8 @@ try{
 
     }
     //--------------------------------------------------
-    function gestionDesExceptions($exception){
+    function gestionDesExceptions($exception)
+    {
 
         $msg_erreur = "ERREUR : ".$exception->getMessage().":".$exception->getFile().":".$exception->getLine();
         //envoyeErreur($msg_erreur);
@@ -120,22 +138,27 @@ try{
 
     }
     //---------------------------------------------------
-    function envoyeErreur($msg_erreur){
+    function envoyeErreur($msg_erreur)
+    {
 
-        if( strlen($msg_erreur) <= 70 ){
+        if( strlen($msg_erreur) <= 70 )
+        {
             mail("lefevre451@gmail.com", "Rapport Erreur Exception.", $msg_erreur);
         }
-        else{
+        else
+        {
             $msg_erreur = wordwrap($msg_erreur,70);
             mail("lefevre451@gmail.com", "Rapport Erreur Exception.", $msg_erreur);
         }
     }
     //-----------------------------------------------------
 }
-catch(Exception $e){
+catch(Exception $e)
+{
     echo $e->getMessage();
 }
-finally{
+finally
+{
 
 }
 

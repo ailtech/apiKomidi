@@ -5,6 +5,14 @@
  * Date: 15/03/17
  * Time: 20:02
  */
+/**
+ * Fichier qui permet de rediriger l'utilisateur vers une page d'errreur si il essaye de s'introduire dans le serveur
+ *
+ * @copyright ailTECH
+ * @author Alexandre
+ * @version 1
+ * @since 06/03/2017
+ */
 
 ?>
 <!DOCTYPE html>

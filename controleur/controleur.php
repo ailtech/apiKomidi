@@ -5,33 +5,41 @@
  * Date: 15/03/17
  * Time: 20:00
  */
-try{
+try
+{
     require 'modele/api.class.php';
     //on fait appelle au module avoir la geolocalisation d'un spectacle
-    function vueGetGeoSpe(){
+    function vueGetGeoSpe()
+    {
         require 'vue/apiGetGeoSpe.php';
     }
     //lolrsque on applle les spectacle
-    function vueGetAllSpe(){
+    function vueGetAllSpe()
+    {
         require 'vue/apiGetAffichageSpe.php';
     }
     //lorsque l' on veut toute les alle
-    function vueGetAllSalle(){
+    function vueGetAllSalle()
+    {
         require 'vue/apiGetAffichageSalle.php';
     }
     //lorsque l' on veut une salle precise
-    function vueGetSalleId(){
+    function vueGetSalleId()
+    {
         require 'vue/apiGetSalleId.php';
     }
     //lorsque l'on applleun spectacle precis
-    function vueGetSpeId(){
+    function vueGetSpeId()
+    {
         require 'vue/apiGetAffichageSpeId.php';
     }
 }
-catch( Exception $e ){
+catch( Exception $e )
+{
     echo "Erreur rencontrer:".$e->getMessage();
 }
-finally{
+finally
+{
 
 }
 
