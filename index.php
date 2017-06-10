@@ -47,6 +47,12 @@ try
             vueGetSpeId();
             exit();
         }
+        //lorsquon appelle les coordonne geographique pour geolocalisation
+        if( $_GET['action'] == "apiGetMaj")
+        {
+            vueGetMaj();
+            exit();
+        }
         affichageJsonErreur( "Cette option n'existe pas ou n'est pas fournie par l'api." );
 
 

@@ -33,6 +33,11 @@ try
     {
         require 'vue/apiGetAffichageSpeId.php';
     }
+    //lorsque l'on veut savoir si une mise a jour est disponible
+    function vueGetMaj()
+    {
+        require 'vue/apiGetMaj.php';
+    }
 }
 catch( Exception $e )
 {

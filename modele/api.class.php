@@ -203,6 +203,15 @@ function getAllSalle()
         //return $this->requeteArray($str);
     }
 
+    /**
+     * Fonction qui retourne les mise a jour
+     * @return array|bool
+     */
+    function getMaj(){
+        $str = "SELECT * FROM maj;";
+        return $this->requeteObjet($str);
+    }
+
 }
 
 ?>
